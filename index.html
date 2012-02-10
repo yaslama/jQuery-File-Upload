@@ -16,17 +16,14 @@
 <meta charset="utf-8">
 <title>jQuery File Upload Demo</title>
 <meta name="description" content="File Upload widget with multiple file selection, drag&amp;drop support, progress bar and preview images for jQuery. Supports cross-domain, chunked and resumable file uploads. Works with any server-side platform (Google App Engine, PHP, Python, Ruby on Rails, Java, etc.) that supports standard HTML form file uploads.">
-<!-- Bootstrap CSS Toolkit styles -->
-<link rel="stylesheet" href="http://blueimp.github.com/cdn/css/bootstrap.min.css">
-<style>body{padding-top:60px;}</style>
-<!-- Bootstrap styles for responsive website layout, supporting different screen sizes -->
-<link rel="stylesheet" href="http://blueimp.github.com/cdn/css/bootstrap-responsive.min.css">
-<!-- Bootstrap CSS fixes for IE6 -->
-<!--[if lt IE 7]><link rel="stylesheet" href="http://blueimp.github.com/cdn/css/bootstrap-ie6.min.css"><![endif]-->
-<!-- Bootstrap Image Gallery styles -->
-<link rel="stylesheet" href="http://blueimp.github.com/Bootstrap-Image-Gallery/bootstrap-image-gallery.min.css">
+<!-- jQuery UI styles -->
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.17/themes/base/jquery-ui.css" id="theme">
+<!-- jQuery Image Gallery styles -->
+<link rel="stylesheet" href="http://blueimp.github.com/jQuery-Image-Gallery/jquery.image-gallery.min.css">
 <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
 <link rel="stylesheet" href="css/jquery.fileupload-ui.css">
+<!-- Generic page styles -->
+<link rel="stylesheet" href="css/style.css">
 <!-- Shim to make HTML5 elements usable in older Internet Explorer versions -->
 <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
@@ -50,6 +47,33 @@
                     <li><a href="test/">Test</a></li>
                     <li><a href="https://blueimp.net">&copy; Sebastian Tschan</a></li>
                 </ul>
+                <select id="theme-switcher" class="pull-right">
+                    <option value="base" selected>Base</option>
+                    <option value="black-tie">Black Tie</option>
+                    <option value="blitzer">Blitzer</option>
+                    <option value="cupertino">Cupertino</option>
+                    <option value="dark-hive">Dark Hive</option>
+                    <option value="dot-luv">Dot Luv</option>
+                    <option value="eggplant">Eggplant</option>
+                    <option value="excite-bike">Excite Bike</option>
+                    <option value="flick">Flick</option>
+                    <option value="hot-sneaks">Hot sneaks</option>
+                    <option value="humanity">Humanity</option>
+                    <option value="le-frog">Le Frog</option>
+                    <option value="mint-choc">Mint Choc</option>
+                    <option value="overcast">Overcast</option>
+                    <option value="pepper-grinder">Pepper Grinder</option>
+                    <option value="redmond">Redmond</option>
+                    <option value="smoothness">Smoothness</option>
+                    <option value="south-street">South Street</option>
+                    <option value="start">Start</option>
+                    <option value="sunny">Sunny</option>
+                    <option value="swanky-purse">Swanky Purse</option>
+                    <option value="trontastic">Trontastic</option>
+                    <option value="ui-darkness">UI Darkness</option>
+                    <option value="ui-lightness">UI Lightness</option>
+                    <option value="vader">Vader</option>
+                </select>
             </div>
         </div>
     </div>
@@ -105,22 +129,7 @@
             <li>Uploaded files will be deleted automatically after <strong>5 minutes</strong> (demo setting).</li>
             <li>You can <strong>drag &amp; drop</strong> files from your desktop on this webpage with Google Chrome, Mozilla Firefox and Apple Safari.</li>
             <li>Please refer to the <a href="https://github.com/blueimp/jQuery-File-Upload">project website</a> and <a href="https://github.com/blueimp/jQuery-File-Upload/wiki">documentation</a> for more information.</li>
-            <li>Built with Twitter's <a href="http://twitter.github.com/bootstrap/">Bootstrap</a> toolkit and Icons from <a href="http://glyphicons.com/">Glyphicons</a>.</li>
         </ul>
-    </div>
-</div>
-<!-- modal-gallery is the modal dialog used for the image gallery -->
-<div id="modal-gallery" class="modal modal-gallery hide fade">
-    <div class="modal-header">
-        <a class="close" data-dismiss="modal">&times;</a>
-        <h3 class="modal-title"></h3>
-    </div>
-    <div class="modal-body"><div class="modal-image"></div></div>
-    <div class="modal-footer">
-        <a class="btn btn-primary modal-next">Next <i class="icon-arrow-right icon-white"></i></a>
-        <a class="btn btn-info modal-prev"><i class="icon-arrow-left icon-white"></i> Previous</a>
-        <a class="btn btn-success modal-play modal-slideshow" data-slideshow="5000"><i class="icon-play icon-white"></i> Slideshow</a>
-        <a class="btn modal-download" target="_blank"><i class="icon-download"></i> Download</a>
     </div>
 </div>
 <!-- Error messages for the upload/download templates -->
@@ -192,20 +201,20 @@ var fileUploadErrors = {
 {% } %}
 </script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
-<script src="js/vendor/jquery.ui.widget.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.17/jquery-ui.min.js"></script>
 <!-- The Templates and Load Image plugins are included for the FileUpload user interface -->
 <script src="http://blueimp.github.com/JavaScript-Templates/tmpl.min.js"></script>
 <script src="http://blueimp.github.com/JavaScript-Load-Image/load-image.min.js"></script>
-<!-- Bootstrap JS and Bootstrap Image Gallery are not required, but included for the demo -->
-<script src="http://blueimp.github.com/cdn/js/bootstrap.min.js"></script>
-<script src="http://blueimp.github.com/Bootstrap-Image-Gallery/bootstrap-image-gallery.min.js"></script>
+<!-- jQuery Image Gallery -->
+<script src="http://blueimp.github.com/jQuery-Image-Gallery/jquery.image-gallery.min.js"></script>
 <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
 <script src="js/jquery.iframe-transport.js"></script>
 <!-- The basic File Upload plugin -->
 <script src="js/jquery.fileupload.js"></script>
 <!-- The File Upload user interface plugin -->
 <script src="js/jquery.fileupload-ui.js"></script>
+<!-- The File Upload jQuery UI plugin -->
+<script src="js/jquery.fileupload-jui.js"></script>
 <!-- The main application script -->
 <script src="js/main.js"></script>
 <!-- The XDomainRequest Transport is included for cross-domain file deletion for IE8+ -->
